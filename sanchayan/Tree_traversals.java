@@ -22,6 +22,16 @@ class Tree_traversals {
         System.out.println(list);
     }
 
+    static int maxDepth(Node root){
+        if(root == null)
+            return 0;
+        
+        int lr = maxDepth(root.left);
+        int rr = maxDepth(root.right);
+
+        return 1+Math.max(lr,rr);
+    }
+
     static void preorderTraversal(Node root){
         if(root == null)
             return;
@@ -101,6 +111,8 @@ class Tree_traversals {
         System.out.println();
         System.out.println("Level Order Traversal");
         levelOrderTraversal(root);
+        System.out.println("Height of Tree");
+        System.out.println(maxDepth(root));
         
     }
 }

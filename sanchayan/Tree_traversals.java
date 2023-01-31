@@ -50,6 +50,23 @@ class Tree_traversals {
         inorderTraversal(root.right);
     }
 
+    static boolean isBalanced(Node root){
+        return dfs(root)!=-1;
+    }
+
+    static int dfs(Node root){
+        if(root==null)
+            return 0;
+        int lh = dfs(root.left);
+        if(lh == -1)
+            return -1;
+        int rh = dfs(root.right);
+        if(rh == -1)
+            return -1;
+        
+        return 1+Math.max(lh,rh);
+    }
+
 
     static void postorderTraversal(Node root){
         if(root == null)
@@ -113,6 +130,9 @@ class Tree_traversals {
         levelOrderTraversal(root);
         System.out.println("Height of Tree");
         System.out.println(maxDepth(root));
+        System.out.println();
+        System.out.println("Check Balanced");
+        System.out.println(isBalanced(root));
         
     }
 }
